@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -23,6 +24,12 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findByPage(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return mProductRepository.findAll(pageable);
+    }
+
+    @Override
+    public Optional<Product> save(Product product) {
+       Product savedProduct = mProductRepository.save(product);
+        return Optional.of(savedProduct);
     }
 
 }

@@ -6,10 +6,9 @@ import com.experiment.order.modules.ResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -47,6 +46,31 @@ public class ProductController {
 
         responseWrapper.data = myPage;
         responseWrapper.datas = mPage.getContent();
+
+        return responseWrapper;
+    }
+
+    @RequestMapping(value = "create", method = RequestMethod.POST)
+    public ResponseWrapper<String, ?> create(@RequestBody ProductRequest productRequest) throws Exception {
+
+        ResponseWrapper<String, ?> responseWrapper = new ResponseWrapper<>();
+
+        if (productRequest == null || productRequest.getProductName() == null || productRequest.getProductName().isEmpty() ||
+                productRequest.getProductCode() == null || productRequest.getProductCode().isEmpty()) {
+            responseWrapper.status = 0;
+            responseWrapper.message = Constants.SAVE_ERROR;
+            return responseWrapper;
+        }
+
+        Product newProduct = new Product();
+        newProduct.setProductName(productRequest.productName);
+        newProduct.setProductCode(productRequest.productCode);
+
+        mProductServiceImpl.save(newProduct);
+
+        responseWrapper.status = HttpStatus.OK.value();
+        responseWrapper.message = Constants.SAVE_SUCCESS;
+
 
         return responseWrapper;
     }

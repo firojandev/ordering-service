@@ -6,4 +6,6 @@ public class Constants {
 
     //400 : Bad request : login
     public static final String INPUT_ERROR = "User credentials required.";
+    public static final String SAVE_SUCCESS = "New record created successfully";
+    public static final String SAVE_ERROR = "Failed to create new record.";
 }
