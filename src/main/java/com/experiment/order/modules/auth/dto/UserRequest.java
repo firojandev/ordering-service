@@ -13,6 +13,8 @@ public class UserRequest {
     private String name;
     private String username;
     private String password;
+    private String phone;
+    private String email;
     private Set<Roles> roles;
 
     public Long getId() {
@@ -53,5 +55,21 @@ public class UserRequest {
 
     public void setRoles(Set<Roles> roles) {
         this.roles = roles;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

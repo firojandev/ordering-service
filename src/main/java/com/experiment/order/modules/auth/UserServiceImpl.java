@@ -38,9 +38,7 @@ public class UserServiceImpl implements UserService {
         String encodedPassword = encoder.encode(rawPassword);
 
         UserModel user = modelMapper.map(userRequest, UserModel.class);
-
         user.setPassword(encodedPassword);
-
 
         if (userRequest.getId() != null) {
             UserModel oldUser = userRepository.findFirstById(userRequest.getId());
@@ -56,10 +54,9 @@ public class UserServiceImpl implements UserService {
                 throw new RuntimeException("Can't find record with identifier: " + userRequest.getId());
             }
         } else {
-//            user.setCreatedBy(currentUser);
             savedUser = userRepository.save(user);
         }
-        userRepository.save(savedUser);
+      //  userRepository.save(savedUser);
         UserResponse userResponse = modelMapper.map(savedUser, UserResponse.class);
         return userResponse;
     }

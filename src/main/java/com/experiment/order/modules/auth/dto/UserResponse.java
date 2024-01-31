@@ -15,7 +15,10 @@ import java.util.Set;
 public class UserResponse {
 
     private Long id;
+    private String name;
     private String username;
+    private String phone;
+    private String email;
     private Set<Roles> roles;
 
     public Long getId() {
@@ -24,6 +27,14 @@ public class UserResponse {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {

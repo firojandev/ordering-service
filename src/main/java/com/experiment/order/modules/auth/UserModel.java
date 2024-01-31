@@ -24,7 +24,7 @@ public class UserModel {
     private String password;
 
     @Column(name = "name")
-    private String empName;
+    private String name;
 
     @Column(name = "email")
     private String email;
@@ -49,6 +49,14 @@ public class UserModel {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -63,14 +71,6 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmpName() {
-        return empName;
-    }
-
-    public void setEmpName(String empName) {
-        this.empName = empName;
     }
 
     public String getEmail() {
