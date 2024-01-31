@@ -1,5 +1,6 @@
 package com.experiment.order.modules.auth;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -10,7 +11,7 @@ import java.util.Optional;
  * @project oauth-jwt
  */
 @Repository
-public interface RefreshTokenRepository extends RefreshableCRUDRepository<RefreshToken, Integer> {
+public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Integer> {
 
     Optional<RefreshToken> findByToken(String token);
 }

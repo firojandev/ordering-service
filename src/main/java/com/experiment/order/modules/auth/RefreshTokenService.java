@@ -7,15 +7,8 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- * @author mhmdz
- * Created By Zeeshan on 20-05-2023
- * @project oauth-jwt
- */
-
 @Service
 public class RefreshTokenService {
-
     @Autowired
     RefreshTokenRepository refreshTokenRepository;
 
@@ -23,11 +16,11 @@ public class RefreshTokenService {
     UserRepository userRepository;
 
     public RefreshToken createRefreshToken(String username){
-        RefreshToken refreshToken = RefreshToken.builder()
-                .userInfo(userRepository.findByUsername(username))
-                .token(UUID.randomUUID().toString())
-                .expiryDate(Instant.now().plusMillis(600000))
-                .build();
+        RefreshToken refreshToken = new RefreshToken();
+        refreshToken.setUserModel(userRepository.findByUsername(username));
+        refreshToken.setToken(UUID.randomUUID().toString());
+        refreshToken.setExpiryDate(Instant.now().plusMillis(600000));
+
         return refreshTokenRepository.save(refreshToken);
     }
 

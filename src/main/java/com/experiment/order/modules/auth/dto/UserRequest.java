@@ -8,12 +8,9 @@ import lombok.ToString;
 
 import java.util.Set;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class UserRequest {
     private Long id;
+    private String name;
     private String username;
     private String password;
     private Set<Roles> roles;
@@ -24,6 +21,14 @@ public class UserRequest {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {

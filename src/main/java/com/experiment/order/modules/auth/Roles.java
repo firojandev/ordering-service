@@ -7,10 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity()
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name = "roles")
 public class Roles {
     @Id

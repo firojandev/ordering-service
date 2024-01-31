@@ -10,10 +10,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity()
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name = "users")
 public class UserModel {
     @Id
