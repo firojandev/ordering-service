@@ -19,6 +19,16 @@ public class Product {
     @Column(name = "status")
     public int status;
 
+    public Product(long id, String productCode, String productName) {
+        this.id = id;
+        this.productCode = productCode;
+        this.productName = productName;
+    }
+
+    public Product() {
+    }
+
+
     public long getId() {
         return id;
     }
@@ -50,4 +60,5 @@ public class Product {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }

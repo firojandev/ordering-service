@@ -21,6 +21,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findByCodeAndName(String keyword1) {
+        return mProductRepository.findByProductCodeLikeOrProductNameLike("%"+keyword1+"%","%"+keyword1+"%");
+    }
+
+    @Override
     public Page<Product> findByPage(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return mProductRepository.findAll(pageable);

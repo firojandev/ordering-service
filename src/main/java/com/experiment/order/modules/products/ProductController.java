@@ -30,6 +30,18 @@ public class ProductController {
         return responseWrapper;
     }
 
+    @PostMapping("findByCodeAndName")
+    public ResponseWrapper<?,Product> findByCodeAndName(@RequestBody ProductRequest productRequest){
+
+        ResponseWrapper<?,Product> responseWrapper = new ResponseWrapper<>();
+
+        responseWrapper.status = HttpStatus.OK.value();
+        responseWrapper.message = Constants.SUCCESSFUL_FETCH;
+        responseWrapper.datas = mProductServiceImpl.findByCodeAndName(productRequest.getProductName());
+
+        return responseWrapper;
+    }
+
     @RequestMapping("findByPage")
     public ResponseWrapper<PageWrapper, Product> get(@RequestParam(defaultValue = "20") int size, @RequestParam(defaultValue = "0") int page) {
 
